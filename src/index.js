@@ -21,7 +21,7 @@ const Game = ({id, owned, close, expires}) => {
     const [realBet, setRealBet] = useState()
     const [jackpot, setJackpot] = useState(0)
     const [balance, setBalance] = useState(100) // set inital money
-    const [spinButtonDisabled, setSpinButtonDisabled] = useState("false");
+
 
     useEffect(() => {
         win()
@@ -42,7 +42,7 @@ const Game = ({id, owned, close, expires}) => {
             <div className="ringEnd">🥭</div>
             </>
                 )
-        } else if (spin && ring1 == undefined) {
+        } else if (spin && ring1 === undefined) {
         return (
             <>
             <div className="ringMoving">🍓</div>
@@ -101,7 +101,7 @@ const Game = ({id, owned, close, expires}) => {
             <div className="ringEnd">🍊</div>
             </>
                 )
-        } else if (spin && ring2 == undefined) {
+        } else if (spin && ring2 === undefined) {
         return (
             <>
             <div className="ringMoving">🍓</div>
@@ -161,7 +161,7 @@ const Game = ({id, owned, close, expires}) => {
             <div className="ringEnd">🍊</div>
             </>
                 )
-        } else if (spin && ring3 == undefined) {
+        } else if (spin && ring3 === undefined) {
         return (
             <>
             <div className="ringMoving">🍓</div>
@@ -211,26 +211,21 @@ const Game = ({id, owned, close, expires}) => {
         }
     }
 
-    // see if win
-    //  function win() {
-    //     if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 != undefined) {
-    //         setPrice(1)
-    //     } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 != undefined) {
-    //         setPrice(2)
-    //     } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 != undefined) {
-    //         setPrice(3)
-    //     } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 != undefined) {
-    //         setPrice(4)
-    //     } else {
-    //         setPrice(0)
-    //     } 
-    // }
 
 
     function rand() {
         setRing1(Math.floor(Math.random() * (100 - 1) + 1)) // return random 1-100
         setTimeout(function(){setRing2(Math.floor(Math.random() * (100 - 1) + 1))}, 300)
         setTimeout(function(){setRing3(Math.floor(Math.random() * (100 - 1) + 1))}, 600)
+    }
+
+    function rand() {
+        setRing1(Math.floor(Math.random() * 100) + 1)
+        setTimeout(() => setRing2(Math.floor(Math.random() * 100) + 1), 300)
+        setTimeout(() => {
+            setRing3(Math.floor(Math.random() * 100) + 1)
+            win()   
+        }, 600)
     }
 
 
@@ -291,11 +286,6 @@ const Game = ({id, owned, close, expires}) => {
 
     function premio() {
 
-       if (price > 0 ) {
-
-            // setSpinButtonDisabled('true');
-            // return;
-       }
 
         if (price === 1 && ring3 > 1) {
             return (
