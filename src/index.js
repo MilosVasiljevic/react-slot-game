@@ -4,8 +4,6 @@ import './index.css';
 import './App.css';
 
 import React, {useState, useEffect} from 'react'
-import { useNavigate } from "react-router-dom";
-
 
 
 
@@ -24,8 +22,6 @@ const Game = ({id, owned, close, expires}) => {
     const [jackpot, setJackpot] = useState(0)
     const [balance, setBalance] = useState(100) // set inital money
     const [spinButtonDisabled, setSpinButtonDisabled] = useState("false");
-
-
 
     useEffect(() => {
         win()
@@ -216,19 +212,19 @@ const Game = ({id, owned, close, expires}) => {
     }
 
     // see if win
-     function win() {
-        if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 != undefined) {
-            setPrice(1)
-        } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 != undefined) {
-            setPrice(2)
-        } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 != undefined) {
-            setPrice(3)
-        } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 != undefined) {
-            setPrice(4)
-        } else {
-            setPrice(0)
-        } 
-    }
+    //  function win() {
+    //     if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 != undefined) {
+    //         setPrice(1)
+    //     } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 != undefined) {
+    //         setPrice(2)
+    //     } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 != undefined) {
+    //         setPrice(3)
+    //     } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 != undefined) {
+    //         setPrice(4)
+    //     } else {
+    //         setPrice(0)
+    //     } 
+    // }
 
 
     function rand() {
@@ -298,13 +294,8 @@ const Game = ({id, owned, close, expires}) => {
        if (price > 0 ) {
 
             // setSpinButtonDisabled('true');
-
             // return;
-           
-     
-           
        }
-
 
         if (price === 1 && ring3 > 1) {
             return (
